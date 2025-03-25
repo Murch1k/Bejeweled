@@ -8,13 +8,13 @@ public class PlayerTest {
 
     @Test
     public void testInitialScoreIsZero() {
-        Player player = new Player();
+        Player player = new Player("TestPlayer");
         assertEquals(0, player.getScore());
     }
 
     @Test
     public void testAddScore() {
-        Player player = new Player();
+        Player player = new Player("TestPlayer");
         player.addScore(50);
         assertEquals(50, player.getScore());
     }

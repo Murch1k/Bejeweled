@@ -29,6 +29,10 @@ public class ConsoleUI {
         System.out.println("Enter swap coordinates (e.g., A1 B2): ");
         String input = scanner.nextLine().toUpperCase().replaceAll("\\s+", ""); // Убираем пробелы
 
+        if (input.equalsIgnoreCase("EXIT")) {
+            return null;
+        }
+
         if (input.length() != 4) {
             System.out.println("Invalid input format! Use format: A1B2");
             return getPlayerMove();

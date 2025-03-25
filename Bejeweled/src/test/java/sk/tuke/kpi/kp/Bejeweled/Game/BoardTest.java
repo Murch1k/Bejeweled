@@ -15,7 +15,7 @@ public class BoardTest {
 
     @BeforeEach
     public void setup() {
-        player = new Player();
+        player = new Player("TestPlayer");
         board = new Board(8, 8, player);
     }
 
