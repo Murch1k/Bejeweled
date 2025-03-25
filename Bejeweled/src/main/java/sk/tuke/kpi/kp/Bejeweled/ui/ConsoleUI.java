@@ -1,8 +1,8 @@
 package sk.tuke.kpi.kp.Bejeweled.ui;
 
 import sk.tuke.kpi.kp.Bejeweled.Enums.GameState;
-import sk.tuke.kpi.kp.Bejeweled.Test.Board;
-import sk.tuke.kpi.kp.Bejeweled.Test.Player;
+import sk.tuke.kpi.kp.Bejeweled.Game.Board;
+import sk.tuke.kpi.kp.Bejeweled.Game.Player;
 
 import java.util.Scanner;
 

@@ -1,8 +1,8 @@
 package sk.tuke.kpi.kp.Bejeweled;
 
-import sk.tuke.kpi.kp.Bejeweled.Test.Board;
-import sk.tuke.kpi.kp.Bejeweled.Test.Menu;
-import sk.tuke.kpi.kp.Bejeweled.Test.Player;
+import sk.tuke.kpi.kp.Bejeweled.Game.Board;
+import sk.tuke.kpi.kp.Bejeweled.Game.Menu;
+import sk.tuke.kpi.kp.Bejeweled.Game.Player;
 import sk.tuke.kpi.kp.Bejeweled.ui.ConsoleUI;
 import sk.tuke.kpi.kp.Bejeweled.Enums.GameState;
 

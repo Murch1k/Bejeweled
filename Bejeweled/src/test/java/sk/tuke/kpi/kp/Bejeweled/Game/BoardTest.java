@@ -1,4 +1,4 @@
-package sk.tuke.kpi.kp.Bejeweled.Test;
+package sk.tuke.kpi.kp.Bejeweled.Game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

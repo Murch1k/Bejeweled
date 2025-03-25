@@ -1,4 +1,4 @@
-package sk.tuke.kpi.kp.Bejeweled.Test;
+package sk.tuke.kpi.kp.Bejeweled.Game;
 
 import sk.tuke.kpi.kp.Bejeweled.Enums.GameState;
 
