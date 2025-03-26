@@ -79,22 +79,22 @@ public class ConsoleUI {
             }
         }
     }
-        public void runNormalGame(Board board, Player player, ConsoleUI ui){
+    public void runNormalGame(Board board, Player player, ConsoleUI ui){
+        printBoard(board);
+        printGameState(board.getState());
+        printScore(player);
+        while (board.checkPossibleMoves()) {
+            int[] move = getPlayerMove();
+            if (move == null) {
+                System.out.println("👋 Exit to the menu. The game is finished.");
+                break;
+            }
+            if (board.swapGems(move[0], move[1], move[2], move[3])) {
+                System.out.println("The move is done!");
+            }
             printBoard(board);
             printGameState(board.getState());
             printScore(player);
-            while (board.checkPossibleMoves()) {
-                int[] move = getPlayerMove();
-                if (move == null) {
-                    System.out.println("👋 Exit to the menu. The game is finished.");
-                    break;
-                }
-                if (board.swapGems(move[0], move[1], move[2], move[3])) {
-                    System.out.println("The move is done!");
-                }
-                printBoard(board);
-                printGameState(board.getState());
-                printScore(player);
             }if(!board.checkPossibleMoves()) {
                 board.setState(GameState.LOSS);
                 System.out.println("No moves available. Game over!");

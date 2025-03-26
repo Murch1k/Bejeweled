@@ -24,7 +24,6 @@ public class RatingServiceJDBC implements RatingService {
     @Override
     public void setRating(Rating rating) throws RatingException {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            // Спочатку перевіримо, чи існує запис для (game, player)
             try (PreparedStatement checkStmt = connection.prepareStatement(SELECT_RATING)) {
                 checkStmt.setString(1, rating.getGame());
                 checkStmt.setString(2, rating.getPlayer());
