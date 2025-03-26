@@ -3,13 +3,10 @@ package sk.tuke.kpi.kp.Bejeweled.Game;
 public class Gem {
     private String type;
     private String color;
-    private boolean isPowerGem;
-    private String effect;
-    public Gem(String type, String color, boolean isPowerGem, String effect){
+
+    public Gem(String type, String color){
         this.type = type;
         this.color = color;
-        this.isPowerGem = isPowerGem;
-        this.effect = effect;
     }
 
     public boolean isMatch(Gem other){
@@ -24,11 +21,5 @@ public class Gem {
         return color;
     }
 
-    public boolean isPowerGem() {
-        return isPowerGem;
-    }
 
-    public String getEffect() {
-        return effect;
-    }
 }

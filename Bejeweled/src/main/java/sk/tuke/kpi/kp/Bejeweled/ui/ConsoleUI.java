@@ -43,7 +43,7 @@ public class ConsoleUI {
         }
 
         if (input.length() != 4) {
-            System.out.println("Invalid input format! Use format: A1B2");
+            System.out.println("Invalid input format! Use format: A1 B2");
             return getPlayerMove();
         }
 
@@ -52,7 +52,16 @@ public class ConsoleUI {
         int row2 = input.charAt(2) - 'A';
         int col2 = Character.getNumericValue(input.charAt(3));
 
+        if (!isValidCoordinate(row1, col1) || !isValidCoordinate(row2, col2)) {
+            System.out.println("Invalid coordinates! Please stay within A–H and 0–7.");
+            return getPlayerMove();
+        }
+
         return new int[]{row1, col1, row2, col2};
+    }
+
+    public boolean isValidCoordinate(int row, int col) {
+        return row >= 0 && row < 8 && col >= 0 && col < 8;
     }
 
     public void startGame(){
@@ -83,10 +92,17 @@ public class ConsoleUI {
         printBoard(board);
         printGameState(board.getState());
         printScore(player);
-        while (board.checkPossibleMoves()) {
+        while (true) {
+            if (!board.hasAnyValidMatchAfterSwap()) {
+                board.regenerateBoard();
+                printBoard(board);
+                continue;
+            }
             int[] move = getPlayerMove();
             if (move == null) {
                 System.out.println("👋 Exit to the menu. The game is finished.");
+                board.setState(GameState.FINISHED);
+                printGameState(board.getState());
                 break;
             }
             if (board.swapGems(move[0], move[1], move[2], move[3])) {
@@ -95,58 +111,65 @@ public class ConsoleUI {
             printBoard(board);
             printGameState(board.getState());
             printScore(player);
-            }if(!board.checkPossibleMoves()) {
-                board.setState(GameState.LOSS);
-                System.out.println("No moves available. Game over!");
-            }
-
-            ScoreServiceJDBC scoreService = new ScoreServiceJDBC();
-            Score score = new Score("Bejeweled", player.getName(), player.getScore(), new Date());
-            scoreService.addScore(score);
-            System.out.println("🏆 The result is saved to the database!");
-            System.out.print("💬 Leave a comment about the game: ");
-            Scanner scanner = new Scanner(System.in);
-            String commentText = scanner.nextLine();
-
-            CommentServiceJDBC commentService = new CommentServiceJDBC();
-            Comment comment = new Comment("Bejeweled", player.getName(), commentText, new Date());
-            commentService.addComment(comment);
-            System.out.println("✅ Comment saved!");
-
-            int rating = getRating();
-            new RatingServiceJDBC().setRating(new Rating("Bejeweled", player.getName(), rating, new Date()));
-            System.out.println("✅ Rating saved!");
         }
-        public void runTimeGame(Board board, Player player, ConsoleUI ui, int secondsLimit) {
-            long startTime = System.currentTimeMillis();
-            long endTime = startTime + secondsLimit * 1000L;
-            printBoard(board);
-            printGameState(board.getState());
-            printScore(player);
-            while (System.currentTimeMillis() < endTime && board.checkPossibleMoves()) {
-                long timeLeft = (endTime - System.currentTimeMillis()) / 1000;
-                System.out.println("⏳ There's time left: " + timeLeft + " sec");
 
-                int[] move = getPlayerMove();
-                if (System.currentTimeMillis() >= endTime) break;
-                if (board.swapGems(move[0], move[1], move[2], move[3])) {
-                    System.out.println("The move is done!");
-                }
+        ScoreServiceJDBC scoreService = new ScoreServiceJDBC();
+        Score score = new Score("Bejeweled", player.getName(), player.getScore(), new Date());
+        scoreService.addScore(score);
+        System.out.println("🏆 The result is saved to the database!");
+        getComment(player);
+
+        int rating = getRating();
+        new RatingServiceJDBC().setRating(new Rating("Bejeweled", player.getName(), rating, new Date()));
+        System.out.println("✅ Rating saved!");
+    }
+
+    public void runTimeGame(Board board, Player player, ConsoleUI ui, int secondsLimit) {
+        long startTime = System.currentTimeMillis();
+        long endTime = startTime + secondsLimit * 1000L;
+        printBoard(board);
+        printGameState(board.getState());
+        printScore(player);
+        while (System.currentTimeMillis() < endTime && board.checkPossibleMoves()) {
+            if (!board.hasAnyValidMatchAfterSwap()) {
+                board.regenerateBoard();
                 printBoard(board);
-                printScore(player);
-                printGameState(board.getState());
+                continue;
             }
-            Scanner scanner = new Scanner(System.in);
+            long timeLeft = (endTime - System.currentTimeMillis()) / 1000;
+            System.out.println("⏳ There's time left: " + timeLeft + " sec");
+
+            int[] move = getPlayerMove();
+            if (System.currentTimeMillis() >= endTime){
+                board.setState(GameState.FINISHED);
+                printGameState(board.getState());
+                break;
+            }
+            if (board.swapGems(move[0], move[1], move[2], move[3])) {
+                System.out.println("The move is done!");
+            }
+            printBoard(board);
+            printScore(player);
+            printGameState(board.getState());
+            }
             System.out.println("\n🕒 Time's up! Your scores: " + player.getScore());
             ScoreTimeServiceJDBC scoreTimeService = new ScoreTimeServiceJDBC(secondsLimit / 60);
             Score score = new Score("Bejeweled", player.getName(), player.getScore(), new Date());
             scoreTimeService.addScore(score);
             System.out.println("⏱️ Timed score saved to database!");
-            System.out.print("⭐ Rate the game from 1 to 5: ");
+            getComment(player);
 
             int rating = getRating();
             new RatingServiceJDBC().setRating(new Rating("Bejeweled", player.getName(), rating, new Date()));
             System.out.println("✅ Rating saved!");
+        }
+        public void getComment(Player player){
+            System.out.print("💬 Leave a comment about the game: ");
+            String commentText = scanner.nextLine();
+            CommentServiceJDBC commentService = new CommentServiceJDBC();
+            Comment comment = new Comment("Bejeweled", player.getName(), commentText, new Date());
+            commentService.addComment(comment);
+            System.out.println("✅ Comment saved!");
         }
         public int getRating() {
             System.out.print("⭐ Rate the game from 1 to 5: ");
@@ -159,9 +182,5 @@ public class ConsoleUI {
                     System.out.print("Invalid number. Try again: ");
                 }
             }
-
         }
-    public void showAvailableMoves(Board board) {
-        System.out.println("Checking available moves...");
-    }
 }

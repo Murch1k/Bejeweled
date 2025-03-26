@@ -25,7 +25,7 @@ public class Board {
         initializeBoard();
     }
 
-    private void initializeBoard() {
+    public void initializeBoard() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 Gem newGem;
@@ -68,7 +68,7 @@ public class Board {
         return true;
     }
 
-    private void removeMatchedGems(List<List<int[]>> matches, Player player) {
+    public void removeMatchedGems(List<List<int[]>> matches, Player player) {
         for (List<int[]> match : matches) {
             for (int[] pos : match) {
                 grid[pos[0]][pos[1]] = null;
@@ -78,7 +78,7 @@ public class Board {
         }
     }
 
-    private boolean isValidSwap(int x1, int y1, int x2, int y2) {
+    public boolean isValidSwap(int x1, int y1, int x2, int y2) {
         return Math.abs(x1 - x2) + Math.abs(y1 - y2) == 1;
     }
 
@@ -156,7 +156,7 @@ public class Board {
     }
 
     public Gem generateNewGem(int row, int column) {
-        return new Gem("Normal", COLORS[new Random().nextInt(COLORS.length)], false, "");
+        return new Gem("Normal", COLORS[new Random().nextInt(COLORS.length)]);
     }
 
     public boolean checkGameOver() {
@@ -171,6 +171,37 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public boolean hasAnyValidMatchAfterSwap() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (j < columns - 1) {
+                    swap(i, j, i, j + 1);
+                    if (!findMatches().isEmpty()) {
+                        swap(i, j, i, j + 1);
+                        return true;
+                    }
+                    swap(i, j, i, j + 1);
+                }
+
+                if (i < rows - 1) {
+                    swap(i, j, i + 1, j);
+                    if (!findMatches().isEmpty()) {
+                        swap(i, j, i + 1, j);
+                        return true;
+                    }
+                    swap(i, j, i + 1, j);
+                }
+            }
+        }
+        return false;
+    }
+
+    public void swap(int x1, int y1, int x2, int y2) {
+        Gem temp = grid[x1][y1];
+        grid[x1][y1] = grid[x2][y2];
+        grid[x2][y2] = temp;
     }
 
     public GameState getState() {
@@ -209,6 +240,11 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public void regenerateBoard() {
+        initializeBoard();
+        System.out.println("No more moves. The board has been regenerated!");
     }
 
     public void setState(GameState state) {
