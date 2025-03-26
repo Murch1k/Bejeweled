@@ -72,8 +72,7 @@ public class ConsoleUI {
                 String playerName = scanner.nextLine();
                 Player player = new Player(playerName);
                 Board board = new Board(8, 8, player);
-                ConsoleUI ui = new ConsoleUI();
-                runNormalGame(board, player, ui);
+                runNormalGame(board, player);
             } else if (gameMode == 2) {
                 int secondsLimit = Menu.getTimeLimitFromUser();
                 if (secondsLimit == -1) {
@@ -83,12 +82,11 @@ public class ConsoleUI {
                 String playerName = scanner.nextLine();
                 Player player = new Player(playerName);
                 Board board = new Board(8, 8, player);
-                ConsoleUI ui = new ConsoleUI();
-                runTimeGame(board, player, ui, secondsLimit);
+                runTimeGame(board, player, secondsLimit);
             }
         }
     }
-    public void runNormalGame(Board board, Player player, ConsoleUI ui){
+    public void runNormalGame(Board board, Player player){
         printBoard(board);
         printGameState(board.getState());
         printScore(player);
@@ -124,7 +122,7 @@ public class ConsoleUI {
         System.out.println("✅ Rating saved!");
     }
 
-    public void runTimeGame(Board board, Player player, ConsoleUI ui, int secondsLimit) {
+    public void runTimeGame(Board board, Player player, int secondsLimit) {
         long startTime = System.currentTimeMillis();
         long endTime = startTime + secondsLimit * 1000L;
         printBoard(board);
