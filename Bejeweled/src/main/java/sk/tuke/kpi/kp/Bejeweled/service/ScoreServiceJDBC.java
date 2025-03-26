@@ -3,7 +3,6 @@ package sk.tuke.kpi.kp.Bejeweled.service;
 import sk.tuke.kpi.kp.Bejeweled.entity.Score;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 

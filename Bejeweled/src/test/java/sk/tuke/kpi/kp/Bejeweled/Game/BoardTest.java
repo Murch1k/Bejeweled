@@ -21,12 +21,10 @@ public class BoardTest {
 
     @Test
     public void testValidSwapCreatesMatch() throws Exception {
-        // Подготовим сетку вручную через reflection
         Field gridField = Board.class.getDeclaredField("grid");
         gridField.setAccessible(true);
         Gem[][] grid = (Gem[][]) gridField.get(board);
 
-        // Делаем три одинаковых подряд
         Gem red = new Gem("Normal", "Red", false, "");
         grid[0][0] = red;
         grid[0][1] = red;

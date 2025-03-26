@@ -15,9 +15,8 @@ public class ScoreTimeServiceJDBCTest {
 
     @BeforeEach
     void setUp() {
-        // допустим, тестируем игру на 5 минут
         scoreService = new ScoreTimeServiceJDBC(5);
-        scoreService.reset(); // очистим перед каждым тестом
+        scoreService.reset();
     }
 
     @Test

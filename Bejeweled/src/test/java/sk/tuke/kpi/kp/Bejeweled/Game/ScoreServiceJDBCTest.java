@@ -16,7 +16,7 @@ public class ScoreServiceJDBCTest {
     @BeforeEach
     public void setup() {
         service = new ScoreServiceJDBC();
-        service.reset(); // очистка перед каждым тестом
+        service.reset();
     }
 
     @Test
