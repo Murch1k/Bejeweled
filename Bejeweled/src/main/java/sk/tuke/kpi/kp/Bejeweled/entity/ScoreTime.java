@@ -2,15 +2,17 @@ package sk.tuke.kpi.kp.Bejeweled.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Score.getTopScores",
-                query = "SELECT s FROM Score s WHERE s.game=:game ORDER BY s.points DESC"),
-        @NamedQuery(name = "Score.resetScores",
-                query = "DELETE FROM Score")
+        @NamedQuery(name = "ScoreTime.getTopScoresByTimeLimit",
+                query = "SELECT s FROM ScoreTime s WHERE s.game = :game AND s.timeLimit = :time ORDER BY s.points DESC"),
+        @NamedQuery(name = "ScoreTime.resetScores",
+                query = "DELETE FROM ScoreTime")
 })
-public class Score {
+
+public class ScoreTime {
     @Id
     @GeneratedValue
     private int ident;
@@ -18,16 +20,19 @@ public class Score {
     private String player;
     private int points;
     private Date playedOn;
+    private int timeLimit;
 
-    public Score(){
+    public ScoreTime(){
 
     }
-    public Score(String game, String player, int points, Date playedOn) {
+    public ScoreTime(String game, String player, int points, int timeLimit, Date playedOn) {
         this.game = game;
         this.player = player;
         this.points = points;
+        this.timeLimit = timeLimit;
         this.playedOn = playedOn;
     }
+
 
     public String getGame() {
         return game;
@@ -61,12 +66,16 @@ public class Score {
         this.playedOn = playedOn;
     }
 
+    public int getTimeLimit() { return timeLimit; }
+    public void setTimeLimit(int timeLimit) { this.timeLimit = timeLimit; }
+
     @Override
     public String toString() {
-        return "Score{" +
+        return "ScoreTime{" +
                 "game='" + game + '\'' +
                 ", player='" + player + '\'' +
                 ", points=" + points +
+                ", time=" + timeLimit +
                 ", playedOn=" + playedOn +
                 '}';
     }

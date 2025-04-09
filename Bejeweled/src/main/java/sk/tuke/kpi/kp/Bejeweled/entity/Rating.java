@@ -1,13 +1,29 @@
 package sk.tuke.kpi.kp.Bejeweled.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "Rating.getAverageRating",
+                query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game"),
+        @NamedQuery(name = "Rating.getRating",
+                query = "SELECT r.rating FROM Rating r WHERE r.game=:game AND r.player = :player"),
+        @NamedQuery(name = "Rating.resetRating",
+                query = "DELETE FROM Rating ")
+})
 public class Rating {
+    @Id
+    @GeneratedValue
+    private int ident;
     private String game;
     private String player;
     private int rating;
     private Date ratedOn;
 
+    public Rating(){
+
+    }
     public Rating(String game, String player, int rating, Date ratedOn) {
         this.game = game;
         this.player = player;
@@ -55,5 +71,13 @@ public class Rating {
                 ", rating=" + rating +
                 ", ratedOn=" + ratedOn +
                 '}';
+    }
+
+    public int getIdent(){
+        return ident;
+    }
+
+    public void setIdent(int ident) {
+        this.ident = ident;
     }
 }

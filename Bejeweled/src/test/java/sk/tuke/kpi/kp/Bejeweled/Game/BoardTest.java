@@ -25,7 +25,7 @@ public class BoardTest {
         gridField.setAccessible(true);
         Gem[][] grid = (Gem[][]) gridField.get(board);
 
-        Gem red = new Gem("Normal", "Red", false, "");
+        Gem red = new Gem("Normal", "Red");
         grid[0][0] = red;
         grid[0][1] = red;
         grid[0][2] = red;

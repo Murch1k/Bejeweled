@@ -1,6 +1,6 @@
 package sk.tuke.kpi.kp.Bejeweled.service;
 
-import sk.tuke.kpi.kp.Bejeweled.entity.Score;
+import sk.tuke.kpi.kp.Bejeweled.entity.ScoreTime;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ScoreTimeServiceJDBC implements ScoreTimeService {
     }
 
     @Override
-    public void addScore(Score score) throws ScoreTimeException {
+    public void addScore(ScoreTime score) throws ScoreTimeException {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement ps = connection.prepareStatement(INSERT)) {
             ps.setString(1, score.getGame());
@@ -39,19 +39,20 @@ public class ScoreTimeServiceJDBC implements ScoreTimeService {
     }
 
     @Override
-    public List<Score> getTopScores(String game) throws ScoreTimeException {
+    public List<ScoreTime> getTopScores(String game) throws ScoreTimeException {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement ps = connection.prepareStatement(SELECT)) {
             ps.setString(1, game);
             ps.setInt(2, currentTimeLimit);
             try (ResultSet rs = ps.executeQuery()) {
-                List<Score> scores = new ArrayList<>();
+                List<ScoreTime> scores = new ArrayList<>();
                 while (rs.next()) {
-                    scores.add(new Score(
+                    scores.add(new ScoreTime(
                             rs.getString("game"),
                             rs.getString("player"),
                             rs.getInt("points"),
-                            rs.getTimestamp("playedOn")
+                            rs.getInt("time"),
+                            rs.getDate("playedOn")
                     ));
                 }
                 return scores;

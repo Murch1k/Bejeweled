@@ -1,5 +1,6 @@
 package sk.tuke.kpi.kp.Bejeweled.ui;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import sk.tuke.kpi.kp.Bejeweled.Enums.GameState;
 import sk.tuke.kpi.kp.Bejeweled.Game.Board;
 import sk.tuke.kpi.kp.Bejeweled.Game.Menu;
@@ -7,16 +8,23 @@ import sk.tuke.kpi.kp.Bejeweled.Game.Player;
 import sk.tuke.kpi.kp.Bejeweled.entity.Comment;
 import sk.tuke.kpi.kp.Bejeweled.entity.Rating;
 import sk.tuke.kpi.kp.Bejeweled.entity.Score;
-import sk.tuke.kpi.kp.Bejeweled.service.CommentServiceJDBC;
-import sk.tuke.kpi.kp.Bejeweled.service.RatingServiceJDBC;
-import sk.tuke.kpi.kp.Bejeweled.service.ScoreServiceJDBC;
-import sk.tuke.kpi.kp.Bejeweled.service.ScoreTimeServiceJDBC;
+import sk.tuke.kpi.kp.Bejeweled.entity.ScoreTime;
+import sk.tuke.kpi.kp.Bejeweled.service.*;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleUI {
     private Scanner scanner;
+
+    private Field field;
+
+    @Autowired
+    private ScoreService scoreService;
+    private ScoreTimeService scoreTimeService;
+    private RatingService ratingService;
+    private CommentService commentService;
 
     public ConsoleUI() {
         this.scanner = new Scanner(System.in);
@@ -152,7 +160,7 @@ public class ConsoleUI {
             }
             System.out.println("\n🕒 Time's up! Your scores: " + player.getScore());
             ScoreTimeServiceJDBC scoreTimeService = new ScoreTimeServiceJDBC(secondsLimit / 60);
-            Score score = new Score("Bejeweled", player.getName(), player.getScore(), new Date());
+            ScoreTime score = new ScoreTime("Bejeweled", player.getName(), player.getScore(), secondsLimit / 60, new Date());
             scoreTimeService.addScore(score);
             System.out.println("⏱️ Timed score saved to database!");
             getComment(player);

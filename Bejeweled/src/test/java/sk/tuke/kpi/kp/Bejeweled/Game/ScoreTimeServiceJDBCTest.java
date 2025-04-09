@@ -1,7 +1,7 @@
 package sk.tuke.kpi.kp.Bejeweled.Game;
 
 import org.junit.jupiter.api.*;
-import sk.tuke.kpi.kp.Bejeweled.entity.Score;
+import sk.tuke.kpi.kp.Bejeweled.entity.ScoreTime;
 import sk.tuke.kpi.kp.Bejeweled.service.ScoreTimeServiceJDBC;
 
 import java.util.Date;
@@ -21,10 +21,10 @@ public class ScoreTimeServiceJDBCTest {
 
     @Test
     void testAddAndGetScore() {
-        Score score = new Score("Bejeweled", "TestPlayer", 150, new Date());
+        ScoreTime score = new ScoreTime("Bejeweled", "TestPlayer", 150,  5,  new Date());
         scoreService.addScore(score);
 
-        List<Score> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
 
         assertEquals(1, scores.size());
         assertEquals("TestPlayer", scores.get(0).getPlayer());
@@ -33,19 +33,19 @@ public class ScoreTimeServiceJDBCTest {
 
     @Test
     void testReset() {
-        scoreService.addScore(new Score("Bejeweled", "Someone", 100, new Date()));
+        scoreService.addScore(new ScoreTime("Bejeweled", "Someone", 100, 5, new Date()));
         scoreService.reset();
-        List<Score> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
         assertTrue(scores.isEmpty());
     }
 
     @Test
     void testMultipleScoresSortedByPoints() {
-        scoreService.addScore(new Score("Bejeweled", "Player1", 100, new Date()));
-        scoreService.addScore(new Score("Bejeweled", "Player2", 300, new Date()));
-        scoreService.addScore(new Score("Bejeweled", "Player3", 200, new Date()));
+        scoreService.addScore(new ScoreTime("Bejeweled", "Player1", 100, 10,  new Date()));
+        scoreService.addScore(new ScoreTime("Bejeweled", "Player2", 300, 15, new Date()));
+        scoreService.addScore(new ScoreTime("Bejeweled", "Player3", 200, 5,  new Date()));
 
-        List<Score> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
 
         assertEquals(3, scores.size());
         assertEquals("Player2", scores.get(0).getPlayer());
