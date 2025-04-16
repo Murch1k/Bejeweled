@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ScoreTimeService {
     void addScore(ScoreTime score) throws ScoreTimeException;
-    List<ScoreTime> getTopScores(String game) throws ScoreTimeException;
+    List<ScoreTime> getTopScoresByTime(String game) throws ScoreTimeException;
     void reset() throws ScoreTimeException;
 }

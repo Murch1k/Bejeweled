@@ -5,12 +5,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Comment.getComment",
-                query = "SELECT c FROM Comment c WHERE c.game=:game ORDER BY c.comment DESC"),
-        @NamedQuery(name = "Comment.resetComment",
-                query = "DELETE FROM Comment ")
-})
+@NamedQuery(name = "Comment.getComment",
+        query = "SELECT c FROM Comment c WHERE c.game=:game ORDER BY c.comment DESC")
+@NamedQuery(name = "Comment.resetComment",
+        query = "DELETE FROM Comment ")
+
 public class Comment {
     @Id
     @GeneratedValue
@@ -20,14 +19,14 @@ public class Comment {
     private String comment;
     private Date commentedOn;
 
-    public Comment(){
-
-    }
     public Comment(String game, String player, String comment, Date commentedOn) {
         this.game = game;
         this.player = player;
         this.comment = comment;
         this.commentedOn = commentedOn;
+    }
+    public Comment(){
+
     }
 
     public String getGame() {

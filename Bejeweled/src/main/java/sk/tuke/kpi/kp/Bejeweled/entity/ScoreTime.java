@@ -2,7 +2,6 @@ package sk.tuke.kpi.kp.Bejeweled.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.sql.Timestamp;
 
 @Entity
 @NamedQueries({
@@ -22,9 +21,6 @@ public class ScoreTime {
     private Date playedOn;
     private int timeLimit;
 
-    public ScoreTime(){
-
-    }
     public ScoreTime(String game, String player, int points, int timeLimit, Date playedOn) {
         this.game = game;
         this.player = player;
@@ -32,7 +28,9 @@ public class ScoreTime {
         this.timeLimit = timeLimit;
         this.playedOn = playedOn;
     }
+    public ScoreTime(){
 
+    }
 
     public String getGame() {
         return game;

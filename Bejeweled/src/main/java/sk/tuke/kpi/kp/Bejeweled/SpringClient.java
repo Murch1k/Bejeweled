@@ -3,9 +3,13 @@ package sk.tuke.kpi.kp.Bejeweled;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.web.client.RestTemplate;
 import sk.tuke.kpi.kp.Bejeweled.Game.Board;
 import sk.tuke.kpi.kp.Bejeweled.Game.Player;
 import sk.tuke.kpi.kp.Bejeweled.service.*;
@@ -13,6 +17,9 @@ import sk.tuke.kpi.kp.Bejeweled.ui.ConsoleUI;
 
 @SpringBootApplication
 @Configuration
+@EntityScan("sk.tuke.kpi.kp.Bejeweled.entity")
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
+        pattern = "sk.tuke.kpi.kp.Bejeweled.server.*"))
 public class SpringClient {
     private Player player;
     public static void main(String[] args) {
@@ -36,21 +43,26 @@ public class SpringClient {
 
     @Bean
     public ScoreService scoreService() {
-        return new ScoreServiceJPA();
+        return new ScoreServiceRestClient();
     }
 
     @Bean
     public ScoreTimeService scoreTimeService(){
-        return new ScoreTimeServiceJPA(0);
+        return new ScoreTimeServiceRestClient();
     }
 
     @Bean
     public RatingService ratingService(){
-        return new RatingServiceJPA();
+        return new RatingServiceRestClient();
     }
 
     @Bean
     public CommentService commentService(){
-        return new CommentServiceJPA();
+        return new CommentServiceRestClient();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

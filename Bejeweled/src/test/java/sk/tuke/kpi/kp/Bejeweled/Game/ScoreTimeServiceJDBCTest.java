@@ -24,7 +24,7 @@ public class ScoreTimeServiceJDBCTest {
         ScoreTime score = new ScoreTime("Bejeweled", "TestPlayer", 150,  5,  new Date());
         scoreService.addScore(score);
 
-        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScoresByTime("Bejeweled");
 
         assertEquals(1, scores.size());
         assertEquals("TestPlayer", scores.get(0).getPlayer());
@@ -35,7 +35,7 @@ public class ScoreTimeServiceJDBCTest {
     void testReset() {
         scoreService.addScore(new ScoreTime("Bejeweled", "Someone", 100, 5, new Date()));
         scoreService.reset();
-        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScoresByTime("Bejeweled");
         assertTrue(scores.isEmpty());
     }
 
@@ -45,7 +45,7 @@ public class ScoreTimeServiceJDBCTest {
         scoreService.addScore(new ScoreTime("Bejeweled", "Player2", 300, 15, new Date()));
         scoreService.addScore(new ScoreTime("Bejeweled", "Player3", 200, 5,  new Date()));
 
-        List<ScoreTime> scores = scoreService.getTopScores("Bejeweled");
+        List<ScoreTime> scores = scoreService.getTopScoresByTime("Bejeweled");
 
         assertEquals(3, scores.size());
         assertEquals("Player2", scores.get(0).getPlayer());

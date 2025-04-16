@@ -11,19 +11,19 @@ import sk.tuke.kpi.kp.Bejeweled.entity.Score;
 import sk.tuke.kpi.kp.Bejeweled.entity.ScoreTime;
 import sk.tuke.kpi.kp.Bejeweled.service.*;
 
-import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleUI {
-    private Scanner scanner;
-
-    private Field field;
+    private final Scanner scanner;
 
     @Autowired
     private ScoreService scoreService;
+    @Autowired
     private ScoreTimeService scoreTimeService;
+    @Autowired
     private RatingService ratingService;
+    @Autowired
     private CommentService commentService;
 
     public ConsoleUI() {
@@ -119,14 +119,15 @@ public class ConsoleUI {
             printScore(player);
         }
 
-        ScoreServiceJDBC scoreService = new ScoreServiceJDBC();
         Score score = new Score("Bejeweled", player.getName(), player.getScore(), new Date());
         scoreService.addScore(score);
         System.out.println("🏆 The result is saved to the database!");
         getComment(player);
 
+
         int rating = getRating();
-        new RatingServiceJDBC().setRating(new Rating("Bejeweled", player.getName(), rating, new Date()));
+        Rating fRating = new Rating("Bejeweled", player.getName(), rating, new Date());
+        ratingService.setRating(fRating);
         System.out.println("✅ Rating saved!");
     }
 
@@ -159,20 +160,19 @@ public class ConsoleUI {
             printGameState(board.getState());
             }
             System.out.println("\n🕒 Time's up! Your scores: " + player.getScore());
-            ScoreTimeServiceJDBC scoreTimeService = new ScoreTimeServiceJDBC(secondsLimit / 60);
             ScoreTime score = new ScoreTime("Bejeweled", player.getName(), player.getScore(), secondsLimit / 60, new Date());
             scoreTimeService.addScore(score);
             System.out.println("⏱️ Timed score saved to database!");
             getComment(player);
 
             int rating = getRating();
-            new RatingServiceJDBC().setRating(new Rating("Bejeweled", player.getName(), rating, new Date()));
+            Rating fRating = new Rating("Bejeweled", player.getName(), rating, new Date());
+            ratingService.setRating(fRating);
             System.out.println("✅ Rating saved!");
         }
         public void getComment(Player player){
             System.out.print("💬 Leave a comment about the game: ");
             String commentText = scanner.nextLine();
-            CommentServiceJDBC commentService = new CommentServiceJDBC();
             Comment comment = new Comment("Bejeweled", player.getName(), commentText, new Date());
             commentService.addComment(comment);
             System.out.println("✅ Comment saved!");

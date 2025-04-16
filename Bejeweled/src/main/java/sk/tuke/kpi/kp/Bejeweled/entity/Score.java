@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Score.getTopScores",
-                query = "SELECT s FROM Score s WHERE s.game=:game ORDER BY s.points DESC"),
-        @NamedQuery(name = "Score.resetScores",
-                query = "DELETE FROM Score")
-})
+@NamedQuery(name = "Score.getTopScores",
+        query = "SELECT s FROM Score s WHERE s.game=:game ORDER BY s.points DESC")
+@NamedQuery(name = "Score.resetScores",
+        query = "DELETE FROM Score")
+
 public class Score {
     @Id
     @GeneratedValue
@@ -19,16 +18,15 @@ public class Score {
     private int points;
     private Date playedOn;
 
-    public Score(){
-
-    }
     public Score(String game, String player, int points, Date playedOn) {
         this.game = game;
         this.player = player;
         this.points = points;
         this.playedOn = playedOn;
     }
+    public Score(){
 
+    }
     public String getGame() {
         return game;
     }

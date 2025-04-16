@@ -27,7 +27,7 @@ public class ScoreTimeServiceJPA implements ScoreTimeService {
     }
 
     @Override
-    public List<ScoreTime> getTopScores(String game) throws ScoreTimeException {
+    public List<ScoreTime> getTopScoresByTime(String game) throws ScoreTimeException {
         return entityManager
                 .createNamedQuery("ScoreTime.getTopScoresByTimeLimit", ScoreTime.class)
                 .setParameter("game", game)

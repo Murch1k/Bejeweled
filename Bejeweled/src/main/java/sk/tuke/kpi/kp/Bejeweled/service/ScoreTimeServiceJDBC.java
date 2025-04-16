@@ -39,7 +39,7 @@ public class ScoreTimeServiceJDBC implements ScoreTimeService {
     }
 
     @Override
-    public List<ScoreTime> getTopScores(String game) throws ScoreTimeException {
+    public List<ScoreTime> getTopScoresByTime(String game) throws ScoreTimeException {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement ps = connection.prepareStatement(SELECT)) {
             ps.setString(1, game);

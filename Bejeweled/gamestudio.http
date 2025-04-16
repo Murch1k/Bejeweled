@@ -1,0 +1,11 @@
+
+### POST-запрос: добавить очки
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "Bejeweled",
+  "played_on": "2025-04-09T18:30:00",
+  "player": "Sasha",
+  "points": 123
+}

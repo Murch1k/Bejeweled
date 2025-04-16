@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS Score CASCADE;
 CREATE TABLE Score (
+                       ident SERIAL PRIMARY KEY,
                        player VARCHAR(255) NOT NULL,
                        game VARCHAR(255) NOT NULL,
                        points INTEGER NOT NULL,
@@ -7,6 +8,7 @@ CREATE TABLE Score (
 );
 DROP TABLE IF EXISTS Score_time CASCADE;
 CREATE TABLE score_time (
+                            ident SERIAL PRIMARY KEY,
                             player VARCHAR(255) NOT NULL,
                             game VARCHAR(255) NOT NULL,
                             points INT NOT NULL,
@@ -15,6 +17,7 @@ CREATE TABLE score_time (
 );
 DROP TABLE IF EXISTS Rating CASCADE;
 CREATE TABLE Rating (
+                        ident SERIAL PRIMARY KEY,
                         player VARCHAR(255) NOT NULL,
                         game VARCHAR(255) NOT NULL,
                         rating INTEGER NULL CHECK (rating >= 1 AND rating <= 5),
@@ -23,6 +26,7 @@ CREATE TABLE Rating (
 );
 DROP TABLE IF EXISTS Comment CASCADE;
 CREATE TABLE Comment (
+                         ident SERIAL PRIMARY KEY,
                          player VARCHAR(255) NOT NULL,
                          game VARCHAR(255) NOT NULL,
                          comment TEXT NOT NULL,

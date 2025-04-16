@@ -4,14 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Rating.getAverageRating",
-                query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game"),
-        @NamedQuery(name = "Rating.getRating",
-                query = "SELECT r.rating FROM Rating r WHERE r.game=:game AND r.player = :player"),
-        @NamedQuery(name = "Rating.resetRating",
-                query = "DELETE FROM Rating ")
-})
+@NamedQuery(name = "Rating.getAverageRating",
+        query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game")
+@NamedQuery(name = "Rating.getRating",
+        query = "SELECT r.rating FROM Rating r WHERE r.game=:game AND r.player = :player")
+@NamedQuery(name = "Rating.resetRating",
+        query = "DELETE FROM Rating ")
 public class Rating {
     @Id
     @GeneratedValue
@@ -21,16 +19,15 @@ public class Rating {
     private int rating;
     private Date ratedOn;
 
-    public Rating(){
-
-    }
     public Rating(String game, String player, int rating, Date ratedOn) {
         this.game = game;
         this.player = player;
         this.rating = rating;
         this.ratedOn = ratedOn;
     }
+    public Rating(){
 
+    }
     public String getGame() {
         return game;
     }

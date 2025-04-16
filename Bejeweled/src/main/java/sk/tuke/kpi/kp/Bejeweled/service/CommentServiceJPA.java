@@ -4,12 +4,15 @@ import sk.tuke.kpi.kp.Bejeweled.entity.Comment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public class CommentServiceJPA implements CommentService{
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
     public void addComment(Comment comment) throws CommentException{
         entityManager.persist(comment);
     }

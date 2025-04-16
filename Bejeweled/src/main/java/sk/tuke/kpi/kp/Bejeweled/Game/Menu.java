@@ -62,7 +62,7 @@ public class Menu {
             String input = scanner.nextLine();
 
             switch (input) {
-                case "1": return 5 * 60;
+                case "1": return 1 * 60;
                 case "2": return 10 * 60;
                 case "3": return 15 * 60;
                 case "4": return -1;
