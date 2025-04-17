@@ -12,7 +12,8 @@ import java.util.Date;
         query = "DELETE FROM Rating ")
 public class Rating {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rating_seq")
+    @SequenceGenerator(name = "rating_seq", sequenceName = "rating_ident_seq", allocationSize = 1)
     private int ident;
     private String game;
     private String player;

@@ -11,7 +11,8 @@ import java.util.Date;
 
 public class Score {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "score_seq")
+    @SequenceGenerator(name = "score_seq", sequenceName = "score_ident_seq", allocationSize = 1)
     private int ident;
     private String game;
     private String player;

@@ -13,7 +13,8 @@ import java.util.Date;
 
 public class ScoreTime {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "score_time_seq")
+    @SequenceGenerator(name = "score_time_seq", sequenceName = "score_time_ident_seq", allocationSize = 1)
     private int ident;
     private String game;
     private String player;

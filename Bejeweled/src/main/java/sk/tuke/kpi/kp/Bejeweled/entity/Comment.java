@@ -12,7 +12,8 @@ import java.util.Date;
 
 public class Comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq")
+    @SequenceGenerator(name = "comment_seq", sequenceName = "comment_ident_seq", allocationSize = 1)
     private int ident;
     private String game;
     private String player;
