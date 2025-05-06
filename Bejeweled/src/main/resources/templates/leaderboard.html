@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="/css/score.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="background-wrapper">
+        <div class="score-box">
+            <h1 class="page-title"><i class="fas fa-trophy"></i> Leaderboard</h1>
+            <table class="score-table">
+                <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody id="score-body">
+                </tbody>
+            </table>
+            <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to menu</a>
+        </div>
+        <img src="/images/background_menu.png" alt="Background" class="menu-image"/>
+    </div>
+</div>
+
+<script>
+    async function loadScores() {
+        const res = await fetch("/api/score/Bejeweled");
+        const scores = await res.json();
+        const body = document.getElementById("score-body");
+
+        body.innerHTML = "";
+        scores.forEach((score, index) => {
+            const rankIcon = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1;
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${rankIcon}</td>
+                <td><i class="fas fa-user"></i> ${score.player}</td>
+                <td style="color:#ffe680; font-weight:bold">${score.points}</td>
+                <td>${new Date(score.playedAt || Date.now()).toLocaleDateString()}</td>
+            `;
+            body.appendChild(row);
+        });
+    }
+
+    loadScores();
+</script>
+</body>
+</html>

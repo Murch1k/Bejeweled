@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bejeweled</title>
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="background-wrapper">
+        <div class="menu-box">
+
+            <div id="main-menu">
+                <h1 class="logo">BEJEWELED</h1>
+
+                <a href="javascript:void(0)" onclick="showModeMenu()" class="menu-btn"><i class="fas fa-play"></i> Play</a>
+                <a href="/rules" class="menu-btn"><i class="fas fa-book"></i> Rules</a>
+                <a href="/comment" class="menu-btn"><i class="fas fa-comment"></i> Comments</a>
+                <a href="/leaderboard" class="menu-btn"><i class="fas fa-trophy"></i> Leaderboard</a>
+
+                <div id="auth-section"></div>
+
+                <div class="rating-box">
+                    <div id="average-rating">Average Rating: <span id="avg">?</span> / 5</div>
+                    <div id="stars" class="star-rating"></div>
+                </div>
+            </div>
+
+            <div id="mode-menu" style="display: none;">
+                <h2 class="logo">Select mode</h2>
+                <a href="/game/classic" class="menu-btn"><i class="fas fa-gem"></i> Classic mode</a>
+                <a href="javascript:void(0)" onclick="showTimeSelection()" class="menu-btn"><i class="fas fa-stopwatch"></i> Timed mode</a>
+                <button class="menu-btn" onclick="showMainMenu()"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div id="time-selection-menu" style="display: none;">
+            <h2 class="logo">Select duration</h2>
+            <div class="time-selection">
+                <a href="/gameTime/timed?duration=300" class="time-option">5 min</a>
+                <a href="/gameTime/timed?duration=600" class="time-option">10 min</a>
+                <a href="/gameTime/timed?duration=900" class="time-option">15 min</a>
+            </div>
+            <button class="menu-btn" onclick="showModeMenu()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+    </div>
+
+        <img src="/images/menu_.png" alt="Bejeweled Background" class="menu-image"/>
+    </div>
+</div>
+
+<script>
+    function showModeMenu() {
+        document.getElementById('main-menu').style.display = 'none';
+        document.getElementById('mode-menu').style.display = 'block';
+        document.getElementById('time-selection-menu').style.display = 'none';
+    }
+
+    function showMainMenu() {
+        document.getElementById('main-menu').style.display = 'block';
+        document.getElementById('mode-menu').style.display = 'none';
+        document.getElementById('time-selection-menu').style.display = 'none';
+    }
+
+    function showTimeSelection() {
+        document.getElementById('main-menu').style.display = 'none';
+        document.getElementById('mode-menu').style.display = 'none';
+        document.getElementById('time-selection-menu').style.display = 'block';
+    }
+
+    async function checkAuth() {
+        const token = localStorage.getItem("token");
+        const authSection = document.getElementById("auth-section");
+
+        if (!token) {
+            authSection.innerHTML = `<a href="/login" class="menu-btn"><i class="fas fa-sign-in-alt"></i> Login</a>`;
+            return;
+        }
+
+        try {
+            const res = await fetch("/auth/me", {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                authSection.innerHTML = `
+                    <span class="menu-user">👤 ${data.username}</span>
+                    <button onclick="logout()" class="menu-btn">
+                        <i class="fas fa-sign-out-alt"></i> Log out
+                    </button>`;
+            } else {
+                localStorage.removeItem("token");
+                authSection.innerHTML = `<a href="/login" class="menu-btn"><i class="fas fa-sign-in-alt"></i> Login</a>`;
+            }
+        } catch (e) {
+            authSection.innerHTML = `<a href="/login" class="menu-btn"><i class="fas fa-sign-in-alt"></i> Login</a>`;
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem("token");
+        window.location.reload();
+    }
+
+    checkAuth();
+
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+
+    async function loadRating() {
+        const res = await fetch("/api/rating/average?game=Bejeweled");
+        const avg = await res.json();
+        document.getElementById("avg").textContent = avg.toFixed(1);
+
+        renderStars(avg, false);
+
+        if (token && username) {
+            const r = await fetch(`/api/rating?game=Bejeweled&player=${username}`);
+            const personal = await r.json();
+            renderStars(personal?.rating || 0, true);
+        }
+    }
+
+    function renderStars(currentRating, interactive = true) {
+        const starsContainer = document.getElementById("stars");
+        starsContainer.innerHTML = "";
+
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement("i");
+
+            if (i <= Math.floor(currentRating)) {
+                star.className = "fas fa-star"; // полная
+            } else if (i - currentRating <= 0.5) {
+                star.className = "fas fa-star-half-alt"; // половинка
+            } else {
+                star.className = "far fa-star"; // пустая
+            }
+
+            star.style.color = "#ffe680";
+            star.style.fontSize = "24px";
+            star.style.cursor = interactive ? "pointer" : "default";
+
+            if (interactive) {
+                star.addEventListener("click", async () => {
+                    if (!token || !username) return alert("Login first");
+                    await fetch("/api/rating", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            game: "Bejeweled",
+                            player: username,
+                            rating: i
+                        })
+                    });
+                    loadRating();
+                });
+            }
+
+            starsContainer.appendChild(star);
+        }
+    }
+</script>
+
+</body>
+</html>

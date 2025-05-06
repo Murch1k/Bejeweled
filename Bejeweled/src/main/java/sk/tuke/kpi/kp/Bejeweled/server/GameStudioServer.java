@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sk.tuke.kpi.kp.Bejeweled.service.*;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "sk.tuke.kpi.kp.Bejeweled")
 @Configuration
 @EntityScan("sk.tuke.kpi.kp.Bejeweled.entity")
 public class GameStudioServer {

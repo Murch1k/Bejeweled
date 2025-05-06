@@ -251,4 +251,48 @@ public class Board {
         this.state = state;
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public Gem[][] getGrid() {
+        return grid;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public String renderHtml() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<table class='game-board'>");
+
+        for (int i = 0; i < rows; i++) {
+            sb.append("<tr>");
+            for (int j = 0; j < columns; j++) {
+                Gem gem = grid[i][j];
+                String color = gem != null ? gem.getColor().toLowerCase() : "empty";
+                sb.append("<td class='gem-cell' data-x='").append(i)
+                        .append("' data-y='").append(j).append("'>");
+                if (!color.equals("empty")) {
+                    sb.append("<img src='/images/").append(color)
+                            .append(".png' class='gem-img")
+                            .append(gem == null ? " removed" : "")
+                            .append("'/>");
+                }
+                sb.append("</td>");
+            }
+            sb.append("</tr>");
+        }
+
+        sb.append("</table>");
+        return sb.toString();
+    }
+
+
 }
+

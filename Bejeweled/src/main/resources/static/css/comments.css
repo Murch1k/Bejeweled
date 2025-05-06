@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f112b;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background-wrapper {
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.menu-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.page-title {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffe680;
+    z-index: 2;
+    text-align: center;
+}
+
+.comments-box {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 6px;
+}
+
+.comment-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-left: 4px solid #9747ff;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.comment-user {
+    font-weight: bold;
+    color: #ffa726;
+    margin-bottom: 6px;
+}
+
+.comment-text {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.comment-date {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.back-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #ffe680;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.back-btn i {
+    margin-right: 6px;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+.comment-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.comment-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #ffe680;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#comment-form textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    resize: vertical;
+}
+
+#comment-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #ffe680;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player's comments</title>
+    <link rel="stylesheet" href="/css/comments.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="background-wrapper">
+
+        <h1 class="page-title"><i class="fas fa-comments"></i> Player's comments</h1>
+
+        <div id="comment-list" class="comments-box"></div>
+
+
+        <div id="comment-area" style="display: none;">
+            <button id="show-comment-form" class="comment-btn">
+                <i class="fas fa-pen"></i> Leave a comment
+            </button>
+
+            <form id="comment-form" style="display: none;">
+                <textarea id="comment-text" rows="4" cols="50" placeholder="Enter a comment..." required></textarea><br>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+
+        <div id="comment-warning" style="display: none;" class="comment-warning">
+            <p>To leave a comment, log in to your account.</p>
+        </div>
+
+        <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to menu</a>
+        <img src="/images/background_menu.png" alt="Background" class="menu-image"/>
+    </div>
+</div>
+
+<script>
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+
+    const commentArea = document.getElementById("comment-area");
+    const commentWarning = document.getElementById("comment-warning");
+    const showBtn = document.getElementById("show-comment-form");
+    const form = document.getElementById("comment-form");
+
+    if (token) {
+        commentArea.style.display = "block";
+    } else {
+        commentWarning.style.display = "block";
+    }
+
+    if (showBtn && form) {
+        showBtn.addEventListener("click", () => {
+            showBtn.style.display = "none";
+            form.style.display = "block";
+        });
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const text = document.getElementById("comment-text").value.trim();
+            if (!text) return;
+
+            const res = await fetch("/api/comment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    player: username,
+                    game: "Bejeweled",
+                    comment: text
+                })
+            });
+
+            if (res.ok) {
+                document.getElementById("comment-text").value = "";
+                await loadComments();
+            } else {
+                alert("Ошибка при отправке комментария");
+            }
+        });
+    }
+
+    async function loadComments() {
+        const res = await fetch("/api/comment");
+        const comments = await res.json();
+        const list = document.getElementById("comment-list");
+        list.innerHTML = "";
+
+        comments.forEach(c => {
+            const div = document.createElement("div");
+            div.className = "comment-card";
+            div.innerHTML = `
+                <div class="comment-user"><i class="fas fa-user"></i> <strong>${c.player}</strong></div>
+                <div class="comment-text">${c.comment}</div>
+                <div class="comment-date"><i class="fas fa-clock"></i> ${c.commentedOn.replace("T", " ").substring(0, 16)}</div>
+            `;
+            list.appendChild(div);
+        });
+    }
+
+    loadComments();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your result</title>
+    <link rel="stylesheet" href="/css/score.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="background-wrapper">
+        <div class="score-box">
+            <h1 class="page-title"><i class="fas fa-star"></i> Your result</h1>
+
+            <p class="score-text">Player: <span id="player-name"></span></p>
+            <p class="score-text">Score: <span id="score-points"></span></p>
+
+            <button onclick="saveScore()" class="save-btn">
+                <i class="fas fa-upload"></i> Save and go to the leaderboard
+            </button>
+
+            <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to menu</a>
+        </div>
+
+        <img src="/images/background_menu.png" alt="Background" class="menu-image"/>
+    </div>
+</div>
+
+<script>
+    const player = localStorage.getItem("username");
+    const token = localStorage.getItem("token");
+    const points = localStorage.getItem("lastScore");
+
+    document.getElementById("player-name").textContent = player || "Unknown";
+    document.getElementById("score-points").textContent = points || "0";
+
+    async function saveScore() {
+        if (!player || !points) {
+            alert("Unable to save the result");
+            return;
+        }
+
+        const res = await fetch("/api/score", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                player: player,
+                points: parseInt(points),
+                game: "Bejeweled"
+            })
+        });
+
+        if (res.ok) {
+            window.location.href = "/leaderboard";
+        } else {
+            alert("Error when saving the result");
+        }
+    }
+</script>
+</body>
+</html>

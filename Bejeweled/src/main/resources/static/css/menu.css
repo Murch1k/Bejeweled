@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f112b;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.menu-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.logo {
+    font-size: 32px;
+    color: #ffe680;
+    margin-bottom: 20px;
+}
+
+.menu-box {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 260px;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    text-decoration: none;
+    padding: 16px 22px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.menu-btn i {
+    margin-right: 10px;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.rating {
+    margin-top: 15px;
+    color: #ffe680;
+    font-size: 14px;
+}
+
+.stars {
+    color: #f1c40f;
+    font-size: 18px;
+}
+
+.menu-user {
+    color: #ffe680;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+}
+
+.rating-box {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffe680;
+}
+
+.star-rating i {
+    color: #ffe680;
+    font-size: 24px;
+    margin: 0 4px;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.star-rating i:hover {
+    transform: scale(1.2);
+}
+
+.star-rating i {
+    margin: 0 2px;
+    transition: transform 0.2s;
+}
+
+.star-rating i:hover {
+    transform: scale(1.2);
+}
+
+.time-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+.time-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    text-decoration: none;
+    padding: 16px 22px;
+    border-radius: 12px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 200px;
+    transition: background 0.3s;
+}
+.time-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
