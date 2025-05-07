@@ -6,10 +6,13 @@
       <list>
         <option value="$PROJECT_DIR$/Bejeweled/pom.xml" />
         <option value="$PROJECT_DIR$/src/pom.xml" />
+        <option value="$PROJECT_DIR$/../Bejeweled1/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/../Bejeweled1/pom.xml" />
         <option value="$PROJECT_DIR$/src/pom.xml" />
       </set>
     </option>

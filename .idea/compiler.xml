@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Bejeweled1" target="23" />
       <module name="src" target="23" />
     </bytecodeTargetLevel>
   </component>

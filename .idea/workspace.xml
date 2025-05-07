@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5e75a0e8-a4bd-462b-86d7-7413e8c2f4ef" name="Changes" comment="maybe last update" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Exception" />
+        <option value="package-info" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2twJsVH09wHlrpWU5aHZHMYIICM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in gamestudio.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.gamestudio | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.gamestudio | POST-запрос: добавить очки.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceJDBCTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceJPATest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlayerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreServiceJDBCTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.GameStudioServer.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SpringClient.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Александр/IdeaProjects/gamestudio-9438/Bejeweled/src/main/java/sk/tuke/kpi/kp/Bejeweled/resourses/diagrams&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;HTTP Request&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438\Bejeweled\src\main\java\sk\tuke\kpi\kp\Bejeweled\resourses\diagrams" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438" />
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438\Bejeweled" />
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438\Bejeweled\src\main\resources\templates" />
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438\Bejeweled\src\main\resources\static" />
+      <recent name="C:\Users\Александр\IdeaProjects\gamestudio-9438\Bejeweled\src\main\resources\static\images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.GameStudioServer">
+    <configuration name="gamestudio | POST-запрос: добавить очки" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/Bejeweled/gamestudio.http" executionIdentifier="POST-запрос: добавить очки" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="gamestudio | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/Bejeweled/gamestudio.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="CommentServiceJPATest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Bejeweled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sk.tuke.kpi.kp.Bejeweled.Game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sk.tuke.kpi.kp.Bejeweled.Game" />
+      <option name="MAIN_CLASS_NAME" value="sk.tuke.kpi.kp.Bejeweled.Game.CommentServiceJPATest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameStudioServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Bejeweled" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="sk.tuke.kpi.kp.Bejeweled.server.GameStudioServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sk.tuke.kpi.kp.Bejeweled.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringClient" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Bejeweled" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="sk.tuke.kpi.kp.Bejeweled.SpringClient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sk.tuke.kpi.kp.Bejeweled.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.GameStudioServer" />
+        <item itemvalue="Spring Boot.SpringClient" />
+        <item itemvalue="HTTP Request.gamestudio | POST-запрос: добавить очки" />
+        <item itemvalue="HTTP Request.gamestudio | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e75a0e8-a4bd-462b-86d7-7413e8c2f4ef" name="Changes" comment="" />
+      <created>1741257409392</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741257409392</updated>
+      <workItem from="1741257410557" duration="1365000" />
+      <workItem from="1741714661563" duration="1872000" />
+      <workItem from="1741782547651" duration="1864000" />
+      <workItem from="1741784504917" duration="5425000" />
+      <workItem from="1741789989648" duration="7407000" />
+      <workItem from="1741863757511" duration="2485000" />
+      <workItem from="1742470268298" duration="2844000" />
+      <workItem from="1742580510977" duration="1231000" />
+      <workItem from="1742686503302" duration="610000" />
+      <workItem from="1742827123637" duration="9562000" />
+      <workItem from="1742856729959" duration="590000" />
+      <workItem from="1742860153045" duration="293000" />
+      <workItem from="1742916517396" duration="12852000" />
+      <workItem from="1742934103183" duration="319000" />
+      <workItem from="1742935368040" duration="9838000" />
+      <workItem from="1742949883573" duration="12000" />
+      <workItem from="1742986186860" duration="15415000" />
+      <workItem from="1743018611063" duration="919000" />
+      <workItem from="1743071822657" duration="4683000" />
+      <workItem from="1743674576223" duration="2655000" />
+      <workItem from="1743944566718" duration="2859000" />
+      <workItem from="1744033896264" duration="3261000" />
+      <workItem from="1744123386346" duration="1629000" />
+      <workItem from="1744128188442" duration="1566000" />
+      <workItem from="1744134914702" duration="11154000" />
+      <workItem from="1744196288549" duration="9244000" />
+      <workItem from="1744220893123" duration="7102000" />
+      <workItem from="1744279118509" duration="520000" />
+      <workItem from="1744386184097" duration="205000" />
+      <workItem from="1744647520596" duration="826000" />
+      <workItem from="1744668422290" duration="626000" />
+      <workItem from="1744814887774" duration="177000" />
+      <workItem from="1744818146142" duration="11888000" />
+      <workItem from="1744879392427" duration="3854000" />
+      <workItem from="1745349048481" duration="440000" />
+      <workItem from="1745349501171" duration="43000" />
+      <workItem from="1746213219225" duration="2606000" />
+      <workItem from="1746296745043" duration="3264000" />
+      <workItem from="1746313026835" duration="4400000" />
+      <workItem from="1746360597166" duration="21161000" />
+      <workItem from="1746405370239" duration="1038000" />
+      <workItem from="1746438950392" duration="23843000" />
+      <workItem from="1746530765044" duration="34195000" />
+      <workItem from="1746612432456" duration="178000" />
+      <workItem from="1746632900163" duration="1498000" />
+    </task>
+    <task id="LOCAL-00001" summary="1">
+      <option name="closed" value="true" />
+      <created>1741257624767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741257624767</updated>
+    </task>
+    <task id="LOCAL-00002" summary="check">
+      <option name="closed" value="true" />
+      <created>1742842909737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742842909737</updated>
+    </task>
+    <task id="LOCAL-00003" summary="check">
+      <option name="closed" value="true" />
+      <created>1742921479969</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742921479969</updated>
+    </task>
+    <task id="LOCAL-00004" summary="check">
+      <option name="closed" value="true" />
+      <created>1742921582536</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742921582536</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update code">
+      <option name="closed" value="true" />
+      <created>1742946506312</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742946506312</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update code">
+      <option name="closed" value="true" />
+      <created>1742987026335</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742987026336</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update code">
+      <option name="closed" value="true" />
+      <created>1742987529828</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742987529828</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update code">
+      <option name="closed" value="true" />
+      <created>1742999959408</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742999959408</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update code">
+      <option name="closed" value="true" />
+      <created>1743014873958</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743014873958</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update code">
+      <option name="closed" value="true" />
+      <created>1743018909337</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743018909337</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update code">
+      <option name="closed" value="true" />
+      <created>1744197766111</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744197766111</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update code">
+      <option name="closed" value="true" />
+      <created>1744842900783</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744842900783</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update code">
+      <option name="closed" value="true" />
+      <created>1744842930655</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744842930655</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update code">
+      <option name="closed" value="true" />
+      <created>1744849146270</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744849146270</updated>
+    </task>
+    <task id="LOCAL-00015" summary="maybe last update">
+      <option name="closed" value="true" />
+      <created>1746575482826</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746575482826</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <MESSAGE value="check" />
+    <MESSAGE value="update code" />
+    <MESSAGE value="maybe last update" />
+    <option name="LAST_COMMIT_MESSAGE" value="maybe last update" />
+  </component>
+</project>
