@@ -110,15 +110,12 @@
     const username = localStorage.getItem("username");
 
     async function loadRating() {
-        // средний рейтинг
         const res = await fetch("/api/rating/average?game=Bejeweled");
         const avg = await res.json();
         document.getElementById("avg").textContent = avg.toFixed(1);
 
-        // отрисовать средний как пассивные звезды
         renderStars(avg, false);
 
-        // пользовательский рейтинг
         if (token && username) {
             const r = await fetch(`/api/rating?game=Bejeweled&player=${username}`);
             const personal = await r.json();
