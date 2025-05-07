@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e75a0e8-a4bd-462b-86d7-7413e8c2f4ef" name="Changes" comment="maybe last update" />
+    <list default="true" id="5e75a0e8-a4bd-462b-86d7-7413e8c2f4ef" name="Changes" comment="maybe last update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +30,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -113,6 +118,17 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Bejeweled" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Bejeweled" />
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <configuration name="GameStudioServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -211,7 +227,7 @@
       <workItem from="1746438950392" duration="23843000" />
       <workItem from="1746530765044" duration="34195000" />
       <workItem from="1746612432456" duration="178000" />
-      <workItem from="1746632900163" duration="1498000" />
+      <workItem from="1746632900163" duration="2683000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
